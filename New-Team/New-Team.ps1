@@ -7,6 +7,10 @@
         3. add the DocumentID Column the the default view of the library in the $libraryName parameters
         The owner of the team will be the user executing the script
         The member feature is to be implemented
+    
+    The first time you can add your admin credentials (no MFA).
+    Add-PnPStoredCredential -Name $tenantUrl -Username <ADMIN_USER_NAME> -Password $(<ADMIN_PSW>|ConvertTo-SecureString -AsPlainText -Force)
+    This is storing the credentials in windows credential manager so that Connect-PnPOnLine cmdlet will not prompt for credentials again.
 
 .LINK
     https://www.sharepointdiary.com/2019/03/sharepoint-online-enable-document-id-service-using-powershell.html
