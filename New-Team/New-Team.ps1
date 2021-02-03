@@ -1,10 +1,17 @@
 ﻿
-#Read more: 
-#https://www.sharepointdiary.com/2019/03/sharepoint-online-enable-document-id-service-using-powershell.html
-#https://www.collabmagazine.com/provisioning-teams-in-microsoft-teams-using-the-pnp-provisioning-engine
+<#
+.Description
+    This function will create 
+        1. a team of name $teamTitle in the tenant $tenant according to the template.xml located in the local path $templatePath
+        2. enable the DocumentID Feature to the sharepoint site collection underneath the team
+        3. add the DocumentID Column the the default view of the library in the $libraryName parameters
+        The owner of the team will be the user executing the script
+        The member feature is to be implemented
 
-#you need a sharepoint admin user with no MFA required
-#install the pnp module via Install-Module -Name PnP.PowerShell -force
+.LINK
+    https://www.sharepointdiary.com/2019/03/sharepoint-online-enable-document-id-service-using-powershell.html
+    https://www.collabmagazine.com/provisioning-teams-in-microsoft-teams-using-the-pnp-provisioning-engine
+#>
 
 function New-Team(){
     param (
