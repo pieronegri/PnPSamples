@@ -35,9 +35,6 @@ function New-Team(){
     $siteURL = "https://{0}.sharepoint.com/sites/{1}" -f $tenant,$teamAlias
     $featureId = "b50e3104-6812-424f-a011-cc90e6327318" #Document ID Feature
 
-    #the first time you can add your admin credentials. This is storing the credentials in windows credential manager
-    #Add-PnPStoredCredential -Name $tenantUrl -Username <ADMIN_USER_NAME> -Password $(<ADMIN_PSW>|ConvertTo-SecureString -AsPlainText -Force)
-
     try{
         Connect-PnPOnline -Url $siteURL -ErrorAction Stop
     }
