@@ -1,5 +1,7 @@
 ﻿
-#Read more: https://www.sharepointdiary.com/2019/03/sharepoint-online-enable-document-id-service-using-powershell.html
+#Read more: 
+#https://www.sharepointdiary.com/2019/03/sharepoint-online-enable-document-id-service-using-powershell.html
+#https://www.collabmagazine.com/provisioning-teams-in-microsoft-teams-using-the-pnp-provisioning-engine
 
 #you need a sharepoint admin user with no MFA required
 #install the pnp module via Install-Module -Name PnP.PowerShell -force
