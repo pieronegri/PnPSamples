@@ -1,4 +1,3 @@
-﻿
 <#
 .Description
     This function will create 
@@ -11,7 +10,6 @@
     The first time you can add your admin credentials (no MFA).
     Add-PnPStoredCredential -Name $tenantUrl -Username <ADMIN_USER_NAME> -Password $(<ADMIN_PSW>|ConvertTo-SecureString -AsPlainText -Force)
     This is storing the credentials in windows credential manager so that Connect-PnPOnLine cmdlet will not prompt for credentials again.
-
 .LINK
     https://www.sharepointdiary.com/2019/03/sharepoint-online-enable-document-id-service-using-powershell.html
     https://www.collabmagazine.com/provisioning-teams-in-microsoft-teams-using-the-pnp-provisioning-engine
@@ -35,25 +33,17 @@ function New-Team(){
     $siteURL = "https://{0}.sharepoint.com/sites/{1}" -f $tenant,$teamAlias
     $featureId = "b50e3104-6812-424f-a011-cc90e6327318" #Document ID Feature
 
-    try{
-        Connect-PnPOnline -Url $siteURL -ErrorAction Stop
-    }
-    catch{
-        #Connect to the tenant and create the Team from the templatefileName
-        Connect-PnPOnline -Url $tenantUrl  
-        $ownerUPN=$(Get-PnPStoredCredential -Name $tenantUrl).UserName
-        $parameters=@{
+    Connect-PnPOnline -Url $tenantUrl  
+    $ownerUPN=$(Get-PnPStoredCredential -Name $tenantUrl).UserName
+    $parameters=@{
             "TeamTitle"=$teamTitle;
             "TeamAlias"=$teamAlias;
             "MemberUPN"=$memberUPN;
             "OwnerUPN"=$ownerUPN
-        } 
-        Invoke-PnPTenantTemplate -Path $templatePath -Parameters $parameters
-    }
-    finally{
-        Connect-PnPOnline -Url $siteURL -ErrorAction Stop
-        Write-host -f Yellow "$teamTitle Team and SiteCollection Created @ $siteURL"
-    }
+    } 
+    Invoke-PnPTenantTemplate -Path $templatePath -Parameters $parameters
+    Connect-PnPOnline -Url $siteURL -ErrorAction Stop
+    Write-host -f Yellow "$teamTitle Team and SiteCollection Created @ $siteURL, if the Team is not created rerun the script"
 
     #Configure the Document ID properties in $siteURL
     Write-host -f Yellow "Activating Document ID Service Feature..."
@@ -74,6 +64,7 @@ function New-Team(){
     }
     
     try{
+        Set-PnpSite  -NoScriptSite $false -Identity $siteUrl
         Set-PnPPropertyBagValue -Key "docid_enabled" -Value "1"
         Set-PnPPropertyBagValue -Key "docid_msft_hier_siteprefix" -Value $docIdPrefix
     }
@@ -95,6 +86,3 @@ function New-Team(){
         Write-host -f Yellow "Document ID column already exists in the list!"
     }
 }
-
-
-
