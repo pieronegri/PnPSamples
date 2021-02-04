@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = 'DocumentId.psm1'
+RootModule = 'Teams.psm1'
 
 # Version number of this module.
 ModuleVersion = '1.0'
@@ -51,7 +51,7 @@ Copyright = '(c) 2021 pieronegri. All rights reserved.'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-# RequiredModules = @()
+#RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()

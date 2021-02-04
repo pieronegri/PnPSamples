@@ -2,6 +2,7 @@ function Add-ColumnToDefaultView
 {
     param ($siteURl,$columnRef)
     Connect-myPnPOnline -Url $siteUrl
+    $null=Get-PnPList -Identity $libraryName -ThrowExceptionIfListNotFound
     $defaultListView  =  Get-PnPView -List $libraryName | Where-Object {$_.DefaultView -eq $True}
 
     #Add column to the View

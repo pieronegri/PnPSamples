@@ -1,8 +1,6 @@
-<#
-.LINKS
-    https://4sysops.com/archives/how-to-export-powershell-module-functions/
-#>
-$NoExport = 'Set-DocIdPropertyBag'
+
+
+$NoExport = 'empty'
 $ModuleFunctions = @(Get-ChildItem -Path $PSScriptRoot\*.ps1 -ErrorAction SilentlyContinue)
 $ToExport = $ModuleFunctions | Where-Object { $_.BaseName -notin $NoExport } | Select-Object -ExpandProperty BaseName
 # Dot-source the files.
@@ -16,8 +14,4 @@ foreach ($import in $ModuleFunctions) {
 }
  
 Export-ModuleMember -Function $ToExport
-enum FeatureStatus {
-    Active
-    Inactive
-}
 $global:connectedSiteUrl=""

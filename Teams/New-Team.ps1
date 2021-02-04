@@ -19,9 +19,9 @@
 function New-Team(){
     param (
         [Parameter(Mandatory=$true)]$teamTitle, 
-        [Parameter(Mandatory=$true,HelpMessage="Please enter the TenantName e.g. https://tenantName.sharepoint.com")]$tenant,
-        [Parameter(Mandatory=$false,HelpMessage="Please enter the UserPrincipalName for 1 Member of the team (to be implemented)")]$memberUPN,
-        [Parameter(Mandatory=$true, HelpMessage="Please enter the local path of your template.xml file")]$templatePath,
+        [Parameter(Mandatory=$true)]$tenant,
+        [Parameter(Mandatory=$false,HelpMessage="(to be implemented)")]$memberUPN,
+        [Parameter(Mandatory=$true)]$templatePath,
         $docIdPrefix="myPrefix"
     )
 
