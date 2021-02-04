@@ -1,3 +1,7 @@
+<#
+.Description
+    This function is the dispatcher to the functions which add the specified feature
+#>
 function Add-FeatureToSite
 {[cmdletbinding()]
     param (
